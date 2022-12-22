@@ -252,6 +252,11 @@ class ElasticEngine extends Engine
         $this
             ->buildSearchQueryPayloadCollection($builder, ['highlight' => false])
             ->each(function ($payload) use (&$count) {
+                if ($minScore = Arr::get($payload, 'body.min_score')) {
+                    unset($payload['body']['min_score']);
+                    $payload['min_score'] = $minScore;
+                }
+
                 $result = ElasticClient::count($payload);
 
                 $count = $result['count'];

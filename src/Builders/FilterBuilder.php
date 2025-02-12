@@ -237,7 +237,7 @@ class FilterBuilder extends Builder
      * @param string $boolean
      * @return $this
      */
-    public function whereIn($field, array $value)
+    public function whereIn($field, $value)
     {
         $this->wheres['must'][] = [
             'terms' => [
@@ -253,7 +253,7 @@ class FilterBuilder extends Builder
      * @param array $value
      * @return $this
      */
-    public function orWhereIn($field, array $value)
+    public function orWhereIn($field, $value)
     {
         $this->wheres['should'][] = [
             'terms' => [
@@ -274,7 +274,7 @@ class FilterBuilder extends Builder
      * @param string $boolean
      * @return $this
      */
-    public function whereNotIn($field, array $value)
+    public function whereNotIn($field, $value)
     {
         $term = [
             'terms' => [
@@ -291,7 +291,7 @@ class FilterBuilder extends Builder
      * @param array $value
      * @return $this
      */
-    public function orWhereNotIn($field, array $value)
+    public function orWhereNotIn($field, $value)
     {
         $term = [
             'terms' => [
